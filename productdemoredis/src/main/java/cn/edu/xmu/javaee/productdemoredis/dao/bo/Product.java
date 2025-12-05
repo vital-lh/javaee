@@ -4,6 +4,7 @@ import cn.edu.xmu.javaee.core.clonefactory.CopyFrom;
 import cn.edu.xmu.javaee.core.clonefactory.CopyNotNullTo;
 import cn.edu.xmu.javaee.core.clonefactory.CopyTo;
 import cn.edu.xmu.javaee.productdemoredis.mapper.po.ProductPo;
+import cn.edu.xmu.javaee.productdemoredis.dao.bo.OnSale;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

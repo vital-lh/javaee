@@ -1,7 +1,5 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.productdemoredis.controller.dto;
-
-
 import cn.edu.xmu.javaee.core.clonefactory.CopyTo;
 import cn.edu.xmu.javaee.core.validation.NewGroup;
 import cn.edu.xmu.javaee.productdemoredis.dao.bo.Product;
