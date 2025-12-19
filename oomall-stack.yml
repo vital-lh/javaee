@@ -1,0 +1,199 @@
+version: '3.8'
+
+services:
+  # MySQL 数据库服务
+  mysql:
+    image: swr.cn-north-4.myhuaweicloud.com/javaee/oomall-mysql:1.0.0-SNAPSHOT
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.role == database
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      update_config:
+        parallelism: 1
+        delay: 30s
+        order: stop-first
+    ports:
+      - target: 3306
+        published: 3306
+        protocol: tcp
+        mode: host
+    environment:
+      MYSQL_ROOT_PASSWORD: javaee_3-6
+      MYSQL_DATABASE: oomall
+      MYSQL_USER: oomall_user
+      MYSQL_PASSWORD: javaee_3-6
+      TZ: Asia/Shanghai
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - mysql-logs:/var/log/mysql
+    networks:
+      - javaee-proxy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pOomall@2024!Secure"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "10"
+
+  # 售后模块服务
+  aftersale:
+    image: swr.cn-north-4.myhuaweicloud.com/javaee/oomall-aftersale:1.0.0-SNAPSHOT
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.role == aftersale
+      resources:
+        limits:
+          memory: 1.5G
+        reservations:
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+      update_config:
+        parallelism: 1
+        delay: 30s
+        order: start-first
+      rollback_config:
+        parallelism: 0
+        order: stop-first
+    ports:
+      - target: 8080
+        published: 8080
+        protocol: tcp
+        mode: host
+    environment:
+      TZ: Asia/Shanghai
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/oomall?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&characterEncoding=utf8&autoReconnect=true
+      SPRING_DATASOURCE_USERNAME: oomall_user
+      SPRING_DATASOURCE_PASSWORD: javaee_3-6
+      FEIGN_CLIENT_SERVICE_MODULE_URL: http://service:8081
+      JAVA_OPTS: "-Xms512m -Xmx1024m -XX:+UseG1GC -Dfile.encoding=UTF-8 -Dspring.config.location=/app/config/"
+    volumes:
+      - aftersale-logs:/app/logs
+      - type: bind
+        source: /opt/oomall/config/aftersale
+        target: /app/config
+        read_only: true
+    depends_on:
+      - mysql
+    networks:
+      - javaee-proxy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "10"
+
+  # 服务模块服务
+  service:
+    image: swr.cn-north-4.myhuaweicloud.com/javaee/oomall-service:1.0.0-SNAPSHOT
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.role == service
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 256M
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+      update_config:
+        parallelism: 1
+        delay: 30s
+        order: start-first
+    ports:
+      - target: 8081
+        published: 8081
+        protocol: tcp
+        mode: host
+    environment:
+      TZ: Asia/Shanghai
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/oomall?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&characterEncoding=utf8&autoReconnect=true
+      SPRING_DATASOURCE_USERNAME: oomall_user
+      SPRING_DATASOURCE_PASSWORD: javaee_3-6
+      JAVA_OPTS: "-Xms256m -Xmx512m -XX:+UseG1GC -Dfile.encoding=UTF-8 -Dspring.config.location=/app/config/"
+    volumes:
+      - service-logs:/app/logs
+      - type: bind
+        source: /opt/oomall/config/service
+        target: /app/config
+        read_only: true
+    depends_on:
+      - mysql
+    networks:
+      - javaee-proxy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "10"
+
+volumes:
+  mysql-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /opt/oomall/data/mysql
+  mysql-logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /opt/oomall/logs/mysql
+  aftersale-logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /opt/oomall/logs/aftersale
+  service-logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /opt/oomall/logs/service
+
+networks:
+  javaee-proxy:
+    external: true

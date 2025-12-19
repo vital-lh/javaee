@@ -1,0 +1,55 @@
+2025-12-18 17:51:58 [main] INFO  c.g.aftersale.AfterSaleApplication - Starting AfterSaleApplication using Java 17.0.17 with PID 35404 (D:\project develop\project\oomall\after-sale\target\classes started by 86166 in D:\project develop\project\oomall)
+2025-12-18 17:51:58 [main] INFO  c.g.aftersale.AfterSaleApplication - No active profile set, falling back to 1 default profile: "default"
+2025-12-18 17:51:59 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.group3_6.aftersale]' package. Please check your configuration.
+2025-12-18 17:51:59 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=4df77d08-46b6-3626-824a-16a749bd0aa0
+2025-12-18 17:51:59 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-18 17:51:59 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-18 17:51:59 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.49]
+2025-12-18 17:51:59 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-18 17:51:59 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 853 ms
+2025-12-18 17:52:00 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-12-18 17:52:00 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-12-18 17:52:00 [main] INFO  c.g.aftersale.AfterSaleApplication - Started AfterSaleApplication in 2.31 seconds (process running for 2.829)
+2025-12-18 17:52:19 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-18 17:52:19 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-12-18 21:58:42 [main] INFO  c.g.aftersale.AfterSaleApplication - Starting AfterSaleApplication using Java 17.0.17 with PID 25496 (D:\project develop\project\oomall\after-sale\target\classes started by 86166 in D:\project develop\project\oomall)
+2025-12-18 21:58:42 [main] INFO  c.g.aftersale.AfterSaleApplication - No active profile set, falling back to 1 default profile: "default"
+2025-12-18 21:58:42 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.group3_6.aftersale]' package. Please check your configuration.
+2025-12-18 21:58:42 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=4df77d08-46b6-3626-824a-16a749bd0aa0
+2025-12-18 21:58:43 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-18 21:58:43 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-18 21:58:43 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.49]
+2025-12-18 21:58:43 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-18 21:58:43 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 815 ms
+2025-12-18 21:58:43 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-12-18 21:58:43 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-12-18 21:58:44 [main] INFO  c.g.aftersale.AfterSaleApplication - Started AfterSaleApplication in 2.216 seconds (process running for 2.77)
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.controller.afterSaleController - ==================== 开始审核售后单 ====================
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.controller.afterSaleController - 店铺ID: 100, 售后单ID: 2
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.controller.afterSaleController - 请求头token: 
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.controller.afterSaleController - 请求参数: AftersaleConfirmDTO(confirm=true, conclusion=sed eiusmod, type=2)
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.controller.afterSaleController - 审核确认值(confirm): true
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6636147f
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.service.afterSaleService - 开始处理售后单审核 - 店铺ID: 100, 售后单ID: 2, 请求参数: AftersaleConfirmDTO(confirm=true, conclusion=sed eiusmod, type=2)
+2025-12-18 21:59:21 [http-nio-8080-exec-5] DEBUG o.s.jdbc.core.JdbcTemplate - Executing prepared SQL query
+2025-12-18 21:59:21 [http-nio-8080-exec-5] DEBUG o.s.jdbc.core.JdbcTemplate - Executing prepared SQL statement [SELECT * FROM aftersale_order WHERE id = ?]
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.repository.AftersaleRepository - 查询到售后单 - ID: 2, 类型: 2, 状态: 1
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.service.afterSaleService - 审核通过，开始处理售后单 - ID: 2
+2025-12-18 21:59:21 [http-nio-8080-exec-5] DEBUG o.s.jdbc.core.JdbcTemplate - Executing prepared SQL update
+2025-12-18 21:59:21 [http-nio-8080-exec-5] DEBUG o.s.jdbc.core.JdbcTemplate - Executing prepared SQL statement [UPDATE aftersale_order SET status = ?, audit_result = ?, audit_time = NOW(), update_time = NOW() WHERE id = ?]
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.repository.AftersaleRepository - 更新售后单状态成功 - ID: 2, 状态: 2, 结论: sed eiusmod
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.service.afterSaleService - 售后单状态更新成功，状态: 审核通过 - ID: 2
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.service.afterSaleService - 检测到维修类型售后单（类型: 2），开始创建服务单 - 售后单ID: 2
+2025-12-18 21:59:21 [http-nio-8080-exec-5] INFO  c.g.a.service.afterSaleService - 创建服务单请求参数 - shopId: 100, aftersaleId: 2, serviceOrderDTO: ServiceOrderCreateDTO(type=2, consignee=ServiceOrderCreateDTO.Consignee(name=李四, mobile=13900139000, regionId=0, address=上海市浦东新区陆家嘴))
+2025-12-18 21:59:22 [http-nio-8080-exec-5] ERROR c.g.a.service.afterSaleService - 服务单创建失败 - 售后单ID: 2, 错误信息: 系统错误，创建服务单失败
+2025-12-18 21:59:22 [http-nio-8080-exec-5] INFO  c.g.a.controller.afterSaleController - 审核结果: errno=0, errmsg=审核通过，但服务单创建失败: 系统错误，创建服务单失败
+2025-12-18 21:59:22 [http-nio-8080-exec-5] INFO  c.g.a.controller.afterSaleController - ==================== 审核结束 ====================
+2025-12-18 21:59:46 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-18 21:59:46 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-12-18 21:59:46 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-12-18 21:59:46 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

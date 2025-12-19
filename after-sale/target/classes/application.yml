@@ -1,0 +1,49 @@
+spring:
+    application:
+        name: aftersale-module
+    datasource:
+        url: jdbc:mysql://localhost:3306/oomall?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+        username: root
+        password: 1234
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        hikari:
+            maximum-pool-size: 10
+            minimum-idle: 5
+            connection-timeout: 30000
+            idle-timeout: 600000
+            max-lifetime: 1800000
+
+# Feign 客户端配置
+feign:
+    client:
+        service-module:
+            url: http://localhost:8081  # 本地测试，服务模块也运行在本地
+    hystrix:
+        enabled: false  # 实验环境可以关闭熔断器
+    httpclient:
+        enabled: true
+        max-connections: 200
+        max-connections-per-route: 50
+
+# 服务器配置
+server:
+    port: 8080
+    servlet:
+        context-path: /
+    tomcat:
+        max-threads: 200
+        min-spare-threads: 10
+        accept-count: 100
+
+# 日志配置
+logging:
+    level:
+        com.example.aftersale: debug
+        com.example.aftersale.feign: DEBUG
+        org.springframework.jdbc.core: DEBUG
+    file:
+        name: logs/aftersale-module.log
+    pattern:
+        file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+        console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+

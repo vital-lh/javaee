@@ -1,0 +1,57 @@
+spring:
+  cloud:
+    loadbalancer:
+      enabled: false
+    discovery:
+      enabled: false
+  application:
+    name: aftersale-module
+  profiles:
+    active: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 20
+      minimum-idle: 10
+
+# Feign客户端配置 - Docker Swarm环境中使用服务名通信
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 10000  # 增加超时时间，因为服务发现可能需要时间
+        read-timeout: 30000
+        logger-level: full
+      # 重要：这里使用服务名，不是IP地址
+      service:
+        url: http://service:8081
+  httpclient:
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50
+  # 禁用Hystrix，因为我们有fallback
+  hystrix:
+    enabled: false
+
+
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.group3_6.aftersale: INFO
+    com.group3_6.aftersale.feign: DEBUG  # 开启Feign调试日志
+    org.springframework.cloud.openfeign: DEBUG
+  file:
+    name: /app/logs/aftersale.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

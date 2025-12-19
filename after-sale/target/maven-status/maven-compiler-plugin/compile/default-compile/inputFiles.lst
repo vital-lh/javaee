@@ -1,0 +1,6 @@
+D:\project develop\project\oomall\after-sale\src\main\java\com\group3_6\aftersale\AfterSaleApplication.java
+D:\project develop\project\oomall\after-sale\src\main\java\com\group3_6\aftersale\controller\afterSaleController.java
+D:\project develop\project\oomall\after-sale\src\main\java\com\group3_6\aftersale\feignClient\FeignClientConfig.java
+D:\project develop\project\oomall\after-sale\src\main\java\com\group3_6\aftersale\feignClient\ServiceOrderFeignClient.java
+D:\project develop\project\oomall\after-sale\src\main\java\com\group3_6\aftersale\repository\AftersaleRepository.java
+D:\project develop\project\oomall\after-sale\src\main\java\com\group3_6\aftersale\service\afterSaleService.java
